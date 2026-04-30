@@ -281,7 +281,7 @@ export default function LandingPage() {
             <div className="price-amount">Rp 0</div>
             <div className="price-muted">Selamanya, tanpa kartu kredit</div>
             <ul className="price-features">
-              <li>15 chat/hari dengan Rindu</li>
+              <li>Chat dengan Rindu (batasan harian)</li>
               <li>Dashboard lengkap</li>
               <li>Budget tracker</li>
               <li>Catat hutang &amp; tabungan</li>
@@ -297,14 +297,15 @@ export default function LandingPage() {
             <div className="price-amount">
               Rp 29.900<span className="price-period">/bulan</span>
             </div>
-            <div className="price-muted">Atau Rp 249.900/tahun (hemat 30%)</div>
+            <div className="price-muted">Atau Rp 229.000/tahun (hemat 36%)</div>
             <ul className="price-features">
-              <li>200 chat/hari — unlimited analysis</li>
-              <li>Semua fitur Gratis</li>
-              <li>Insight kebiasaan AI</li>
-              <li>Tren pengeluaran 6 bulan</li>
-              <li>Export PDF &amp; Excel</li>
-              <li>AI personal memory</li>
+              <li>Chat Rindu unlimited</li>
+              <li>Rindu lebih personal — ingat ceritamu, balas lebih hangat</li>
+              <li>Insight kebiasaan &amp; prediksi saldo akhir bulan</li>
+              <li>Tren 6 bulan — pola pengeluaran jangka panjang</li>
+              <li>Export Excel &amp; PDF laporan keuangan</li>
+              <li>Catatan aset investasi tanpa batas</li>
+              <li>Notifikasi pagi &amp; malam yang personal</li>
             </ul>
             <a href={`${APP_URL}/register`} className="btn-cta btn-accent">
               Upgrade ke Pro
