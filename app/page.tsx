@@ -2,8 +2,15 @@
 
 import Image from 'next/image'
 import { useEffect } from 'react'
+import { trackLead } from '@/lib/meta/events'
 
 const APP_URL = 'https://app.ruangsaku.com'
+
+function handleCtaClick(contentName: string) {
+  // Fire-and-forget — Pixel fires sync, CAPI fetch happens async via sendBeacon-like
+  // behavior. Don't await — browser will navigate via the <a> default behavior.
+  void trackLead({ contentName })
+}
 
 export default function LandingPage() {
   useEffect(() => {
@@ -70,7 +77,7 @@ export default function LandingPage() {
               tabungan, sampai ingetin hutang. Tinggal chat aja, kayak ngobrol biasa.
             </p>
             <div className="hero-actions">
-              <a href={`${APP_URL}/register`} className="btn-cta btn-accent">
+              <a href={`${APP_URL}/register`} className="btn-cta btn-accent" onClick={() => handleCtaClick('CTA: Hero Daftar Gratis')}>
                 Coba Gratis Sekarang
               </a>
               <a href="#fitur" className="btn-cta btn-outline">
@@ -288,7 +295,11 @@ export default function LandingPage() {
               <li>Reminder pagi &amp; malam</li>
               <li>Voice message</li>
             </ul>
-            <a href={`${APP_URL}/register`} className="btn-cta btn-outline">
+            <a
+              href={`${APP_URL}/register`}
+              className="btn-cta btn-outline"
+              onClick={() => handleCtaClick('CTA: Pricing Mulai Gratis')}
+            >
               Mulai Gratis
             </a>
           </div>
@@ -307,7 +318,11 @@ export default function LandingPage() {
               <li>Catatan aset investasi tanpa batas</li>
               <li>Notifikasi pagi &amp; malam yang personal</li>
             </ul>
-            <a href={`${APP_URL}/register`} className="btn-cta btn-accent">
+            <a
+              href={`${APP_URL}/register`}
+              className="btn-cta btn-accent"
+              onClick={() => handleCtaClick('CTA: Pricing Upgrade ke Pro')}
+            >
               Upgrade ke Pro
             </a>
           </div>
@@ -322,6 +337,7 @@ export default function LandingPage() {
           href={`${APP_URL}/register`}
           className="btn-cta btn-accent"
           style={{ fontSize: 18, padding: '16px 40px' }}
+          onClick={() => handleCtaClick('CTA: Final Mulai Ngobrol')}
         >
           Mulai Ngobrol Sekarang
         </a>
