@@ -684,3 +684,27 @@ footer a { color: var(--primary); text-decoration: none; }
     display: none;
   }
 }
+
+/* ====================================================================
+   PHASE 5: Footer fade-in + magnetic button touch-device gating
+   ==================================================================== */
+
+footer {
+  animation: footer-fade-in 800ms ease-out 200ms backwards;
+}
+@keyframes footer-fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Magnetic button safe-disable for touch devices */
+@media (hover: none) {
+  .final-cta .btn-cta {
+    transform: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  footer { animation: none; }
+  .hero::before { animation: none; }
+}
