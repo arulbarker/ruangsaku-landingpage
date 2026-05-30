@@ -216,20 +216,39 @@ footer.v2-footer a:hover { text-decoration: underline; }
     margin: 28px auto 0;
     width: fit-content;
   }
-  /* Idle float — subtle vertical bob saat phone visible */
+  /* Idle float — dramatic vertical bob + rotation oscillation supaya alive feel */
   .ch04-inline-phone .phone-frame-v2 {
-    animation: ch04PhoneFloat 4s ease-in-out infinite;
+    animation: ch04PhoneFloat 3.5s ease-in-out infinite;
+    will-change: transform;
   }
   @keyframes ch04PhoneFloat {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-6px); }
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    25% { transform: translateY(-8px) rotate(-1deg); }
+    50% { transform: translateY(-12px) rotate(0deg); }
+    75% { transform: translateY(-6px) rotate(1deg); }
   }
-  /* Also wrap with subtle ambient glow for sense of focal point */
+  /* Animated ambient glow — pulse warm */
   .ch04-inline-phone .phone-frame-v2 {
     box-shadow:
       0 30px 60px rgba(91, 63, 160, 0.18),
-      0 8px 24px rgba(255, 112, 67, 0.12),
+      0 8px 24px rgba(255, 112, 67, 0.18),
       0 4px 12px rgba(0, 0, 0, 0.08);
+    animation: ch04PhoneFloat 3.5s ease-in-out infinite,
+               ch04PhoneGlow 3s ease-in-out infinite;
+  }
+  @keyframes ch04PhoneGlow {
+    0%, 100% {
+      box-shadow:
+        0 30px 60px rgba(91, 63, 160, 0.18),
+        0 8px 24px rgba(255, 112, 67, 0.15),
+        0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+    50% {
+      box-shadow:
+        0 35px 70px rgba(91, 63, 160, 0.25),
+        0 12px 36px rgba(255, 112, 67, 0.32),
+        0 4px 12px rgba(0, 0, 0, 0.08);
+    }
   }
   .ch04-pricing-grid {
     grid-template-columns: 1fr !important;

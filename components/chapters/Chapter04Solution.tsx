@@ -147,14 +147,15 @@ function CaptionBlock({
       </motion.h3>
       <CaptionBodyReveal body={caption.body} reduced={reduced} />
 
-      {/* Mobile-only inline phone: 1 phone per caption block — animasi reveal saat scroll masuk viewport + idle float + tap feedback */}
+      {/* Mobile-only inline phone: 1 phone per caption block — DRAMATIC reveal saat scroll masuk viewport + idle float + tap feedback */}
       <motion.div
         className="ch04-inline-phone"
-        initial={reduced ? false : { opacity: 0, y: 28, scale: 0.94 }}
-        whileInView={reduced ? undefined : { opacity: 1, y: 0, scale: 1 }}
-        viewport={{ once: false, amount: 0.35 }}
-        transition={{ duration: 0.7, ease: [0.2, 0.8, 0.2, 1] }}
-        whileTap={reduced ? undefined : { scale: 0.97 }}
+        initial={reduced ? false : { opacity: 0, y: 80, scale: 0.7, rotateY: -15 }}
+        whileInView={reduced ? undefined : { opacity: 1, y: 0, scale: 1, rotateY: 0 }}
+        viewport={{ once: false, amount: 0.25 }}
+        transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], type: 'spring', stiffness: 90, damping: 18 }}
+        whileTap={reduced ? undefined : { scale: 0.95 }}
+        style={{ perspective: 1000 }}
       >
         <PhoneFrame style={{ width: 220, height: 440 }}>
           <Image
