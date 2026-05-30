@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import { ChapterNav } from '@/components/ui/ChapterNav'
 import { Chapter01Intro } from '@/components/chapters/Chapter01Intro'
+import { Chapter02Problem } from '@/components/chapters/Chapter02Problem'
 
 const APP_URL = 'https://app.ruangsaku.com'
 
@@ -21,9 +22,7 @@ export default function LandingPage() {
 
       <main>
         <Chapter01Intro />
-        <section id="ch-02" style={{ minHeight: '100vh', background: '#2A1F4E', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <h2>Chapter 02 placeholder</h2>
-        </section>
+        <Chapter02Problem />
         <section id="ch-03" style={{ minHeight: '100vh', background: '#5B3FA0', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <h2>Chapter 03 placeholder</h2>
         </section>
