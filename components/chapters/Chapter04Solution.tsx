@@ -117,6 +117,19 @@ function CaptionBlock({
       >
         {caption.body}
       </p>
+
+      {/* Mobile-only inline phone: 1 phone per caption block */}
+      <div className="ch04-inline-phone">
+        <PhoneFrame style={{ width: 220, height: 440 }}>
+          <Image
+            src={caption.imgSrc}
+            alt={caption.imgAlt}
+            width={430}
+            height={900}
+            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+          />
+        </PhoneFrame>
+      </div>
     </motion.div>
   )
 }
