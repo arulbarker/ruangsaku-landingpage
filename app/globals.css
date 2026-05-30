@@ -181,3 +181,26 @@ footer.v2-footer a:hover { text-decoration: underline; }
     grid-template-columns: 1fr !important;
   }
 }
+
+/* ===== Particle drift (Ch 05) ===== */
+.particle {
+  animation: particleDrift 12s ease-in-out infinite;
+}
+.particle.p-1 { animation-duration: 9s; animation-delay: -2s; }
+.particle.p-2 { animation-duration: 14s; animation-delay: -5s; }
+.particle.p-3 { animation-duration: 11s; animation-delay: -8s; }
+.particle.p-4 { animation-duration: 10s; animation-delay: -1s; }
+.particle.p-5 { animation-duration: 13s; animation-delay: -4s; }
+.particle.p-6 { animation-duration: 8s; animation-delay: -7s; }
+@keyframes particleDrift {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(20px, -15px); }
+  50% { transform: translate(-10px, 25px); }
+  75% { transform: translate(-25px, -10px); }
+}
+@media (hover: none) {
+  .chapter-05 .btn-cta { transform: none !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .particle { animation: none; opacity: 0.1; }
+}
