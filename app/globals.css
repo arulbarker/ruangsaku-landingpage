@@ -178,7 +178,7 @@ nav.scrolled { box-shadow: 0 4px 30px rgba(91, 63, 160, 0.08); }
 
 .bubble {
   max-width: 85%; padding: 14px 18px; font-size: 14px; line-height: 1.6;
-  border-radius: 18px; opacity: 0; animation: bubbleIn 0.4s ease-out forwards;
+  border-radius: 18px;
 }
 .bubble-ai {
   background: var(--bubble); color: var(--text);
@@ -188,18 +188,8 @@ nav.scrolled { box-shadow: 0 4px 30px rgba(91, 63, 160, 0.08); }
   background: var(--primary); color: white;
   border-bottom-right-radius: 6px; align-self: flex-end;
 }
-.bubble:nth-child(1) { animation-delay: 1s; }
-.bubble:nth-child(2) { animation-delay: 2.2s; }
-.bubble:nth-child(3) { animation-delay: 3.5s; }
-.bubble:nth-child(4) { animation-delay: 4.8s; }
-.bubble:nth-child(5) { animation-delay: 6s; }
-
 .typing-dots {
-  display: flex; gap: 4px; padding: 14px 18px;
-  background: var(--bubble); border-radius: 18px;
-  border-bottom-left-radius: 6px; align-self: flex-start;
-  width: fit-content; opacity: 0;
-  animation: bubbleIn 0.3s ease-out 0.5s forwards, fadeOut 0.3s ease-out 0.9s forwards;
+  display: none;  /* legacy — ChatLoop drives typing indicator via framer-motion now */
 }
 .typing-dots span {
   width: 7px; height: 7px; border-radius: 50%; background: var(--primary-light);
@@ -480,4 +470,176 @@ footer a { color: var(--primary); text-decoration: none; }
   .dashboard-card { scroll-snap-align: center; }
   .phone-frame { width: 240px; }
   .dashboard-footnote { margin: 32px 20px 0; padding: 14px 20px; font-size: 13px; }
+}
+
+/* ====================================================================
+   PHASE 3: Dashboard Preview v2 — Sticky phone + content morph + tilt
+   ==================================================================== */
+
+.dashboard-preview-v2 {
+  padding: 80px 24px;
+  position: relative;
+}
+.dashboard-preview-v2 .section-header {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 60px;
+}
+.dashboard-preview-v2 .section-header h2 {
+  font-size: 36px;
+  line-height: 1.2;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0 0 14px;
+}
+.dashboard-preview-v2 .section-header p {
+  font-size: 16px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.dashboard-v2-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(280px, 400px) 1fr;
+  gap: 80px;
+  align-items: start;
+}
+.phone-pin-col {
+  position: sticky;
+  top: 100px;
+  height: fit-content;
+  display: flex;
+  justify-content: center;
+  perspective: 900px;
+}
+.phone-tilt-wrap {
+  transform-style: preserve-3d;
+}
+
+.phone-frame-v2 {
+  width: 280px;
+  height: 560px;
+  background: white;
+  border-radius: 36px;
+  box-shadow:
+    0 30px 60px rgba(91, 63, 160, 0.2),
+    0 8px 16px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(91, 63, 160, 0.12);
+  overflow: hidden;
+  position: relative;
+}
+.phone-notch-v2 {
+  height: 8px;
+  background: #1E1535;
+  margin: 8px 90px 0;
+  border-radius: 999px;
+}
+.phone-screen-v2 {
+  position: absolute;
+  inset: 24px 12px 12px 12px;
+  border-radius: 24px;
+  overflow: hidden;
+  background: #FAF7FF;
+}
+
+.caption-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.caption-block {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px 0;
+}
+.caption-block .step-badge {
+  display: inline-block;
+  background: rgba(91, 63, 160, 0.1);
+  color: var(--primary);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  width: fit-content;
+}
+.caption-block .caption-tag-v2 {
+  display: inline-block;
+  background: rgba(255, 112, 67, 0.12);
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 3px 10px;
+  border-radius: 4px;
+  margin-bottom: 14px;
+  margin-left: 8px;
+  width: fit-content;
+}
+.caption-block h3 {
+  font-size: 32px;
+  color: var(--text);
+  margin: 0 0 14px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+.caption-block p {
+  font-size: 17px;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin: 0;
+  max-width: 480px;
+}
+
+.dashboard-preview-v2 .dashboard-footnote {
+  max-width: 720px;
+  margin: 60px auto 0;
+  padding: 16px 24px;
+  background: var(--bubble);
+  color: var(--text);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 15px;
+}
+
+/* Mobile + low-height fallback: vertical stack, no sticky, no tilt */
+@media (max-width: 768px), (max-height: 700px) {
+  .dashboard-v2-inner {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .phone-pin-col {
+    position: relative;
+    top: auto;
+  }
+  .phone-frame-v2 {
+    width: 240px;
+    height: 480px;
+  }
+  .phone-notch-v2 {
+    margin: 6px 76px 0;
+  }
+  .phone-screen-v2 {
+    inset: 20px 10px 10px 10px;
+  }
+  .caption-block {
+    min-height: auto;
+    padding: 24px 16px;
+    text-align: center;
+    align-items: center;
+  }
+  .caption-block h3 {
+    font-size: 24px;
+  }
+  .caption-block p {
+    font-size: 15px;
+  }
 }
