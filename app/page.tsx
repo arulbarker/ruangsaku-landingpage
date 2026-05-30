@@ -2,6 +2,7 @@ import Image from 'next/image'
 import { ChapterNav } from '@/components/ui/ChapterNav'
 import { Chapter01Intro } from '@/components/chapters/Chapter01Intro'
 import { Chapter02Problem } from '@/components/chapters/Chapter02Problem'
+import { Chapter03MeetRindu } from '@/components/chapters/Chapter03MeetRindu'
 
 const APP_URL = 'https://app.ruangsaku.com'
 
@@ -23,9 +24,7 @@ export default function LandingPage() {
       <main>
         <Chapter01Intro />
         <Chapter02Problem />
-        <section id="ch-03" style={{ minHeight: '100vh', background: '#5B3FA0', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <h2>Chapter 03 placeholder</h2>
-        </section>
+        <Chapter03MeetRindu />
         <section id="ch-04" style={{ minHeight: '100vh', background: '#FAF7FF', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <h2>Chapter 04 placeholder</h2>
         </section>
