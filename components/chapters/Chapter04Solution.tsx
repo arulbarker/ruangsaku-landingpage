@@ -70,6 +70,7 @@ function CaptionBlock({
 
   return (
     <motion.div
+      className="ch04-caption-block"
       style={{
         minHeight: '100vh',
         display: 'flex',
