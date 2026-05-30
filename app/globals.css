@@ -643,3 +643,44 @@ footer a { color: var(--primary); text-decoration: none; }
     font-size: 15px;
   }
 }
+
+/* ====================================================================
+   PHASE 4: How It Works — scroll-linked progress line
+   ==================================================================== */
+
+.how-it-works .steps-wrap {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.how-it-works .progress-line {
+  position: absolute;
+  top: 30px;
+  left: 14%;
+  right: 14%;
+  height: 3px;
+  background: rgba(91, 63, 160, 0.12);
+  border-radius: 999px;
+  overflow: hidden;
+  z-index: 0;
+}
+.how-it-works .progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary), var(--primary-light));
+  transform-origin: left center;
+  width: 100%;
+}
+.how-it-works .steps {
+  position: relative;
+  z-index: 1;
+}
+.how-it-works .step .step-number {
+  background: var(--bg);
+  padding: 0 18px;
+  display: inline-block;
+}
+@media (max-width: 768px) {
+  .how-it-works .progress-line {
+    display: none;
+  }
+}
