@@ -5,3 +5,6 @@ out
 .vercel
 next-env.d.ts
 tsconfig.tsbuildinfo
+
+# Local Playwright debug screenshots
+screenshots-debug/
