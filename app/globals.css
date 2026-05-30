@@ -96,3 +96,66 @@ footer.v2-footer a:hover { text-decoration: underline; }
 @media (prefers-reduced-motion: reduce) {
   nav.v2-nav { transition: none; }
 }
+
+/* ===== Chapter Nav (vertical right-edge dot timeline) ===== */
+.chapter-nav {
+  position: fixed;
+  right: 32px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 50;
+  pointer-events: auto;
+}
+.chapter-nav ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 0;
+  margin: 0;
+}
+.chapter-nav button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: none;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  font-family: inherit;
+}
+.chapter-nav .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 2px solid rgba(91, 63, 160, 0.4);
+  background: transparent;
+  transition: all 250ms ease-out;
+}
+.chapter-nav button.active .dot {
+  background: var(--accent);
+  border-color: var(--accent);
+  transform: scale(1.4);
+}
+.chapter-nav .label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: transparent;
+  transition: color 250ms ease-out;
+}
+.chapter-nav button.active .label {
+  color: var(--primary);
+}
+.chapter-nav button:hover .label {
+  color: var(--primary);
+}
+
+@media (max-width: 768px) {
+  .chapter-nav { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .chapter-nav .dot,
+  .chapter-nav .label { transition: none; }
+}
