@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { MetaPixel } from '@/components/MetaPixel'
 import { CookieConsent } from '@/components/CookieConsent'
+import { SmoothScrollProvider } from '@/components/animation/SmoothScrollProvider'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -37,7 +38,9 @@ export default function RootLayout({
     <html lang="id">
       <body>
         <MetaPixel />
-        {children}
+        <SmoothScrollProvider>
+          {children}
+        </SmoothScrollProvider>
         <CookieConsent />
       </body>
     </html>
