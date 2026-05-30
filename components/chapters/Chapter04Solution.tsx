@@ -53,6 +53,45 @@ const CAPTIONS: CaptionData[] = [
   },
 ]
 
+function CaptionBodyReveal({ body, reduced }: { body: string; reduced: boolean }) {
+  const paraStyle = {
+    fontSize: 'clamp(15px, 1.7vw, 18px)',
+    color: '#6B5E7B',
+    lineHeight: 1.7,
+    margin: 0,
+    maxWidth: 520,
+  } as const
+
+  if (reduced) {
+    return <p style={paraStyle}>{body}</p>
+  }
+
+  const words = body.split(' ')
+  return (
+    <motion.p
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: false, amount: 0.4 }}
+      variants={{ visible: { transition: { staggerChildren: 0.025 } } }}
+      style={paraStyle}
+    >
+      {words.map((w, i) => (
+        <motion.span
+          key={i}
+          variants={{
+            hidden: { opacity: 0.25, y: 4 },
+            visible: { opacity: 1, y: 0 },
+          }}
+          transition={{ duration: 0.4, ease: [0.2, 0.8, 0.2, 1] }}
+          style={{ display: 'inline-block', marginRight: '0.25em' }}
+        >
+          {w}
+        </motion.span>
+      ))}
+    </motion.p>
+  )
+}
+
 function CaptionBlock({
   index,
   caption,
@@ -106,20 +145,17 @@ function CaptionBlock({
       >
         {caption.title}
       </motion.h3>
-      <p
-        style={{
-          fontSize: 'clamp(15px, 1.7vw, 18px)',
-          color: '#6B5E7B',
-          lineHeight: 1.7,
-          margin: 0,
-          maxWidth: 520,
-        }}
-      >
-        {caption.body}
-      </p>
+      <CaptionBodyReveal body={caption.body} reduced={reduced} />
 
-      {/* Mobile-only inline phone: 1 phone per caption block */}
-      <div className="ch04-inline-phone">
+      {/* Mobile-only inline phone: 1 phone per caption block — animasi reveal saat scroll masuk viewport + idle float + tap feedback */}
+      <motion.div
+        className="ch04-inline-phone"
+        initial={reduced ? false : { opacity: 0, y: 28, scale: 0.94 }}
+        whileInView={reduced ? undefined : { opacity: 1, y: 0, scale: 1 }}
+        viewport={{ once: false, amount: 0.35 }}
+        transition={{ duration: 0.7, ease: [0.2, 0.8, 0.2, 1] }}
+        whileTap={reduced ? undefined : { scale: 0.97 }}
+      >
         <PhoneFrame style={{ width: 220, height: 440 }}>
           <Image
             src={caption.imgSrc}
@@ -129,7 +165,7 @@ function CaptionBlock({
             style={{ width: '100%', height: '100%', objectFit: 'cover' }}
           />
         </PhoneFrame>
-      </div>
+      </motion.div>
     </motion.div>
   )
 }

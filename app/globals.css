@@ -216,6 +216,21 @@ footer.v2-footer a:hover { text-decoration: underline; }
     margin: 28px auto 0;
     width: fit-content;
   }
+  /* Idle float — subtle vertical bob saat phone visible */
+  .ch04-inline-phone .phone-frame-v2 {
+    animation: ch04PhoneFloat 4s ease-in-out infinite;
+  }
+  @keyframes ch04PhoneFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+  /* Also wrap with subtle ambient glow for sense of focal point */
+  .ch04-inline-phone .phone-frame-v2 {
+    box-shadow:
+      0 30px 60px rgba(91, 63, 160, 0.18),
+      0 8px 24px rgba(255, 112, 67, 0.12),
+      0 4px 12px rgba(0, 0, 0, 0.08);
+  }
   .ch04-pricing-grid {
     grid-template-columns: 1fr !important;
   }
@@ -242,6 +257,7 @@ footer.v2-footer a:hover { text-decoration: underline; }
 }
 @media (prefers-reduced-motion: reduce) {
   .particle { animation: none; opacity: 0.1; }
+  .ch04-inline-phone .phone-frame-v2 { animation: none; }
 }
 
 /* ===== PhoneFrame UI (Ch 04 desktop sticky + mobile inline) ===== */
