@@ -167,3 +167,17 @@ footer.v2-footer a:hover { text-decoration: underline; }
     gap: 32px !important;
   }
 }
+
+@media (max-width: 768px), (max-height: 700px) {
+  .ch04-grid {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+  .ch04-phone-pin {
+    position: relative !important;
+    top: auto !important;
+  }
+  .ch04-pricing-grid {
+    grid-template-columns: 1fr !important;
+  }
+}

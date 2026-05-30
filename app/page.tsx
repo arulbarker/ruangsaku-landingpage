@@ -3,6 +3,7 @@ import { ChapterNav } from '@/components/ui/ChapterNav'
 import { Chapter01Intro } from '@/components/chapters/Chapter01Intro'
 import { Chapter02Problem } from '@/components/chapters/Chapter02Problem'
 import { Chapter03MeetRindu } from '@/components/chapters/Chapter03MeetRindu'
+import { Chapter04Solution } from '@/components/chapters/Chapter04Solution'
 
 const APP_URL = 'https://app.ruangsaku.com'
 
@@ -25,9 +26,7 @@ export default function LandingPage() {
         <Chapter01Intro />
         <Chapter02Problem />
         <Chapter03MeetRindu />
-        <section id="ch-04" style={{ minHeight: '100vh', background: '#FAF7FF', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <h2>Chapter 04 placeholder</h2>
-        </section>
+        <Chapter04Solution />
         <section id="ch-05" style={{ minHeight: '100vh', background: '#1E1535', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <h2>Chapter 05 placeholder</h2>
         </section>
