@@ -176,61 +176,48 @@ footer.v2-footer a:hover { text-decoration: underline; }
   }
 }
 
-/* ===== Ch 04 mobile: sticky phone-to-top + scaled down + shorter captions ===== */
+/* ===== Ch 04 inline phone (mobile only) ===== */
+.ch04-inline-phone {
+  display: none;
+}
+
+/* ===== Ch 04 mobile: drop sticky pattern, use inline phones per caption ===== */
 @media (max-width: 768px) {
   .ch04-grid {
     grid-template-columns: 1fr !important;
     gap: 0 !important;
   }
+  /* Hide sticky phone column — content morph on hidden element wastes work
+     but doesn't visually matter. Inline phones below render the screenshots. */
   .ch04-phone-pin {
-    /* CRITICAL: keep sticky at top so content morph terlihat saat scroll caption */
-    position: sticky !important;
-    top: 72px !important;
-    z-index: 5;
-    background: linear-gradient(
-      180deg,
-      rgba(250, 247, 255, 0.96) 0%,
-      rgba(240, 234, 255, 0.6) 70%,
-      transparent 100%
-    );
-    backdrop-filter: blur(8px);
-    padding: 16px 0 24px;
-    margin-bottom: 0;
+    display: none !important;
   }
-  .ch04-phone-pin .phone-frame-v2 {
-    transform: scale(0.6);
-    transform-origin: top center;
-    margin: 0 auto;
-  }
-  /* Tighter caption blocks pada mobile — 100vh terlalu panjang */
+  /* Each caption stack vertical with its own phone screenshot below */
   .ch04-caption-block {
-    min-height: 70vh !important;
-    padding: 32px 0 !important;
+    min-height: auto !important;
+    padding: 40px 0 !important;
     text-align: center;
     align-items: center;
+    opacity: 1 !important;
   }
   .ch04-caption-block > span:first-child {
     margin-left: auto;
     margin-right: auto;
   }
+  .ch04-caption-block > h3 {
+    text-align: center;
+  }
+  .ch04-caption-block > p {
+    margin: 0 auto !important;
+    text-align: center;
+  }
+  .ch04-inline-phone {
+    display: block;
+    margin: 28px auto 0;
+    width: fit-content;
+  }
   .ch04-pricing-grid {
     grid-template-columns: 1fr !important;
-  }
-}
-
-/* Landscape short-viewport fallback (iPhone landscape, low-DPI tablet) */
-@media (max-height: 700px) and (orientation: landscape) {
-  .ch04-phone-pin {
-    position: relative !important;
-    top: auto !important;
-  }
-  .ch04-phone-pin .phone-frame-v2 {
-    transform: scale(0.5);
-    transform-origin: top center;
-  }
-  .ch04-caption-block {
-    min-height: auto !important;
-    padding: 24px 0 !important;
   }
 }
 
